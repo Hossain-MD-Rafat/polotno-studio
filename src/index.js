@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import localforage from 'localforage';
-import { createStore } from 'polotno/model/store';
-import { unstable_setRemoveBackgroundEnabled } from 'polotno/config';
+import { createStore } from 'icirclescanvas/model/store';
+import { unstable_setRemoveBackgroundEnabled } from 'icirclescanvas/config';
 
 import './index.css';
 import App from './App';

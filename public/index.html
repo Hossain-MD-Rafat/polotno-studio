@@ -29,14 +29,8 @@
     <meta property="og:url" content="https://studio.polotno.dev/" />
     <meta name="twitter:card" content="summary_large_image" />
     <!-- STYLES -->
-    <link
-      href="https://unpkg.com/@blueprintjs/icons@^3.4.0/lib/css/blueprint-icons.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://unpkg.com/@blueprintjs/core@^3.10.0/lib/css/blueprint.css"
-      rel="stylesheet"
-    />
+    <link href="http://localhost:3000/blueprint-icons.css" rel="stylesheet" />
+    <link href="http://localhost:3000/blueprint.css" rel="stylesheet" />
     <link
       href="https://unpkg.com/@blueprintjs/popover2@0.11.0/lib/css/blueprint-popover2.css"
       rel="stylesheet"
@@ -73,16 +67,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Polotno Studio - Make graphical designs</title>
+    <title>iCircles webcard editor</title>
     <script>
       var _rollbarConfig = {
-        accessToken: '60d59941c2fa404c9083acf3680bacef',
+        accessToken: "60d59941c2fa404c9083acf3680bacef",
         captureUncaught: true,
         captureUnhandledRejections: true,
         payload: {
-          environment: 'production',
+          environment: "production",
         },
-        enabled: window.location.href.indexOf('studio.polotno.dev') >= 0,
+        enabled: window.location.href.indexOf("studio.polotno.dev") >= 0,
         transform: function (payload) {
           payload.state = { state: window.store.toJSON() };
         },
@@ -98,16 +92,16 @@
           );
         }
         var o = {};
-        return (e.m = r), (e.c = o), (e.p = ''), e(0);
+        return (e.m = r), (e.c = o), (e.p = ""), e(0);
       })([
         function (r, e, o) {
-          'use strict';
+          "use strict";
           var n = o(1),
             t = o(4);
           (_rollbarConfig = _rollbarConfig || {}),
             (_rollbarConfig.rollbarJsUrl =
               _rollbarConfig.rollbarJsUrl ||
-              'https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.18.0/rollbar.min.js'),
+              "https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.18.0/rollbar.min.js"),
             (_rollbarConfig.async =
               void 0 === _rollbarConfig.async || _rollbarConfig.async);
           var a = n.setupShim(window, _rollbarConfig),
@@ -122,14 +116,14 @@
             );
         },
         function (r, e, o) {
-          'use strict';
+          "use strict";
           function n(r) {
             return function () {
               try {
                 return r.apply(this, arguments);
               } catch (r) {
                 try {
-                  console.error('[Rollbar]: Internal error', r);
+                  console.error("[Rollbar]: Internal error", r);
                 } catch (r) {}
               }
             };
@@ -140,14 +134,14 @@
             (this.shimId = function () {
               return o;
             }),
-              'undefined' != typeof window &&
+              "undefined" != typeof window &&
                 window._rollbarShims &&
                 (window._rollbarShims[o] = { handler: e, messages: [] });
           }
           function a(r, e) {
             if (r) {
-              var o = e.globalAlias || 'Rollbar';
-              if ('object' == typeof r[o]) return r[o];
+              var o = e.globalAlias || "Rollbar";
+              if ("object" == typeof r[o]) return r[o];
               (r._rollbarShims = {}), (r._rollbarWrappedError = null);
               var t = new p(e);
               return n(function () {
@@ -162,11 +156,11 @@
                   e.enabled !== !1 &&
                     (void 0 === n ||
                       n === !0 ||
-                      ('object' == typeof n && n.network)) &&
+                      ("object" == typeof n && n.network)) &&
                     r.addEventListener &&
-                    (r.addEventListener('load', t.captureLoad.bind(t)),
+                    (r.addEventListener("load", t.captureLoad.bind(t)),
                     r.addEventListener(
-                      'DOMContentLoaded',
+                      "DOMContentLoaded",
                       t.captureDomContentLoaded.bind(t)
                     )),
                   (r[o] = t),
@@ -194,22 +188,22 @@
             var l = function () {
                 var e;
                 if (void 0 === r._rollbarDidLoad) {
-                  e = new Error('rollbar.js did not load');
+                  e = new Error("rollbar.js did not load");
                   for (var o, n, t, l, i = 0; (o = r._rollbarShims[i++]); )
                     for (o = o.messages || []; (n = o.shift()); )
                       for (t = n.args || [], i = 0; i < t.length; ++i)
-                        if (((l = t[i]), 'function' == typeof l)) {
+                        if (((l = t[i]), "function" == typeof l)) {
                           l(e);
                           break;
                         }
                 }
-                'function' == typeof a && a(e);
+                "function" == typeof a && a(e);
               },
               i = !1,
-              s = e.createElement('script'),
-              d = e.getElementsByTagName('script')[0],
+              s = e.createElement("script"),
+              d = e.getElementsByTagName("script")[0],
               c = d.parentNode;
-            (s.crossOrigin = ''),
+            (s.crossOrigin = ""),
               (s.src = t.rollbarJsUrl),
               o || (s.async = !0),
               (s.onload = s.onreadystatechange =
@@ -218,8 +212,8 @@
                     !(
                       i ||
                       (this.readyState &&
-                        'loaded' !== this.readyState &&
-                        'complete' !== this.readyState)
+                        "loaded" !== this.readyState &&
+                        "complete" !== this.readyState)
                     )
                   ) {
                     s.onload = s.onreadystatechange = null;
@@ -236,26 +230,26 @@
                 var n;
                 if (
                   ((n =
-                    'function' == typeof e
+                    "function" == typeof e
                       ? e
                       : function () {
                           return e || {};
                         }),
-                  'function' != typeof r)
+                  "function" != typeof r)
                 )
                   return r;
                 if (r._isWrap) return r;
                 if (
                   !r._rollbar_wrapped &&
                   ((r._rollbar_wrapped = function () {
-                    o && 'function' == typeof o && o.apply(this, arguments);
+                    o && "function" == typeof o && o.apply(this, arguments);
                     try {
                       return r.apply(this, arguments);
                     } catch (o) {
                       var e = o;
                       throw (
                         (e &&
-                          ('string' == typeof e && (e = new String(e)),
+                          ("string" == typeof e && (e = new String(e)),
                           (e._rollbarContext = n() || {}),
                           (e._rollbarContext._wrappedSource = r.toString()),
                           (window._rollbarWrappedError = e)),
@@ -275,8 +269,8 @@
             });
           for (
             var u =
-                'log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad'.split(
-                  ','
+                "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(
+                  ","
                 ),
               f = 0;
             f < u.length;
@@ -286,11 +280,11 @@
           r.exports = { setupShim: a, Rollbar: p };
         },
         function (r, e) {
-          'use strict';
+          "use strict";
           function o(r, e, o) {
             if (r) {
               var t;
-              'function' == typeof e._rollbarOldOnError
+              "function" == typeof e._rollbarOldOnError
                 ? (t = e._rollbarOldOnError)
                 : r.onerror &&
                   !r.onerror.belongsToShim &&
@@ -312,9 +306,9 @@
           }
           function t(r, e, o) {
             if (r) {
-              'function' == typeof r._rollbarURH &&
+              "function" == typeof r._rollbarURH &&
                 r._rollbarURH.belongsToShim &&
-                r.removeEventListener('unhandledrejection', r._rollbarURH);
+                r.removeEventListener("unhandledrejection", r._rollbarURH);
               var n = function (r) {
                 var o, n, t;
                 try {
@@ -325,23 +319,23 @@
                 try {
                   n = r.promise;
                 } catch (r) {
-                  n = '[unhandledrejection] error getting `promise` from event';
+                  n = "[unhandledrejection] error getting `promise` from event";
                 }
                 try {
                   (t = r.detail), !o && t && ((o = t.reason), (n = t.promise));
                 } catch (r) {
-                  t = '[unhandledrejection] error getting `detail` from event';
+                  t = "[unhandledrejection] error getting `detail` from event";
                 }
                 o ||
                   (o =
-                    '[unhandledrejection] error getting `reason` from event'),
+                    "[unhandledrejection] error getting `reason` from event"),
                   e &&
                     e.handleUnhandledRejection &&
                     e.handleUnhandledRejection(o, n);
               };
               (n.belongsToShim = o),
                 (r._rollbarURH = n),
-                r.addEventListener('unhandledrejection', n);
+                r.addEventListener("unhandledrejection", n);
             }
           }
           function a(r, e, o) {
@@ -349,15 +343,15 @@
               var n,
                 t,
                 a =
-                  'EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload'.split(
-                    ','
+                  "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(
+                    ","
                   );
               for (n = 0; n < a.length; ++n)
                 (t = a[n]), r[t] && r[t].prototype && l(e, r[t].prototype, o);
             }
           }
           function l(r, e, o) {
-            if (e.hasOwnProperty && e.hasOwnProperty('addEventListener')) {
+            if (e.hasOwnProperty && e.hasOwnProperty("addEventListener")) {
               for (
                 var n = e.addEventListener;
                 n._rollbarOldAdd && n.belongsToShim;
@@ -391,7 +385,7 @@
           };
         },
         function (r, e) {
-          'use strict';
+          "use strict";
           function o(r, e) {
             (this.impl = r(e, this)), (this.options = e), n(o.prototype);
           }
@@ -404,8 +398,8 @@
                   };
                 },
                 o =
-                  'log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad'.split(
-                    ','
+                  "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(
+                    ","
                   ),
                 n = 0;
               n < o.length;
@@ -419,8 +413,8 @@
               (n = o.method),
                 (t = o.args),
                 this[n] &&
-                  'function' == typeof this[n] &&
-                  ('captureDomContentLoaded' === n || 'captureLoad' === n
+                  "function" == typeof this[n] &&
+                  ("captureDomContentLoaded" === n || "captureLoad" === n
                     ? this[n].apply(this, [t[0], o.ts])
                     : this[n].apply(this, t));
             return this;
@@ -428,7 +422,7 @@
             (r.exports = o);
         },
         function (r, e) {
-          'use strict';
+          "use strict";
           r.exports = function (r) {
             return function (e) {
               if (!e && !window._rollbarInitialized) {
@@ -436,7 +430,7 @@
                 for (
                   var o,
                     n,
-                    t = r.globalAlias || 'Rollbar',
+                    t = r.globalAlias || "Rollbar",
                     a = window.rollbar,
                     l = function (r) {
                       return new a(r);
@@ -469,11 +463,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script
-      async
-      defer
-      data-domain="studio.polotno.dev/2"
-      src="https://plausible.io/js/plausible.js"
-    ></script>
   </body>
 </html>

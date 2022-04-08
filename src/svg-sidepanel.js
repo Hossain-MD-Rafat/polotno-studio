@@ -6,7 +6,7 @@ import { useInfiniteAPI } from 'polotno/utils/use-api';
 
 import { SectionTab } from 'polotno/side-panel';
 import { svgToURL } from 'polotno/utils/svg';
-import { getKey } from 'polotno/utils/validate-key';
+import { getKey } from 'icirclescanvas/utils/validate-key';
 import { getImageSize } from 'polotno/utils/image';
 import FaVectorSquare from '@meronex/icons/fa/FaVectorSquare';
 
@@ -16,7 +16,7 @@ export const SVGPanel = observer(({ store }) => {
   // load data
   const { data, isLoading, loadMore, setQuery } = useInfiniteAPI({
     getAPI: ({ page, query }) =>
-      `https://api.polotno.dev/api/get-svgapi?query=${query}&page=${
+      `https://api.polotno.dev/asaapikjkjkj/get-svgapkjkdsji?query=${query}&page=${
         page - 1
       }&key=${getKey()}`,
     getSize: (res) => Math.floor(res.count / res.limit),
@@ -41,7 +41,7 @@ export const SVGPanel = observer(({ store }) => {
         isLoading={isLoading}
         onSelect={async (item, pos, element) => {
           const req = await fetch(
-            `https://api.polotno.dev/api/download-svgapi?key=${getKey()}&path=${
+            `https://api.polotno.dev/askjaskjapikjkjkj/download-svgapdfdfdi?key=${getKey()}&path=${
               item.path
             }`
           );

@@ -4,6 +4,13 @@
   "author": "Anton Lavrenov",
   "description": "Free design editor",
   "private": true,
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
+    "delay": 2500
+  },
   "electronDeps": {
     "electron": "^14.0.0",
     "electron-builder": "^22.11.7",

@@ -1,0 +1,10 @@
+{
+    "hits": 346,
+    "totalPages": 12,
+    "items": [
+        {
+            "json": "http://localhost:3000/template.json",
+            "preview": "https://api.polotno.dev/templates/2021-10-25-instagram-post-waffle-pancake.jpg"
+        }
+    ]
+}

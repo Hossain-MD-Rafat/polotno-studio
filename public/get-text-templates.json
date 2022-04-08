@@ -1,0 +1,9 @@
+{
+    "hits": 61,
+    "items": [
+        {
+            "json": "http://localhost:3000/ici.json",
+            "preview": "http://localhost:3000/2021-06-01-text-plain-adventure-fun-cursive.png"
+        }
+    ]
+}
