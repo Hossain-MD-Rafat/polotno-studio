@@ -36,6 +36,7 @@ let designType = url.searchParams.get("design_type");
 let designId = url.searchParams.get("design_id");
 let designer = url.searchParams.get("designer");
 let microsite_id = url.searchParams.get("microsite_id");
+let product_id = url.searchParams.get("product_id");
 
 export default observer(({ store }) => {
   const inputRef = React.useRef();
@@ -45,7 +46,9 @@ export default observer(({ store }) => {
   return (
     <NavbarContainer className="bp3-navbar">
       <NavInner>
-        {!microsite_id && !designId ? (
+        {microsite_id && !designer ? (
+          ""
+        ) : (
           <Navbar.Group align={Alignment.LEFT}>
             <Button
               icon="new-object"
@@ -140,15 +143,26 @@ export default observer(({ store }) => {
                   } else {
                     url = "https://icircles.app/api/veditor/save_design";
                   }
-                  fetch(url, {
+                  const res = await fetch(url, {
                     method: "POST",
                     body: formData,
-                  });
-                  let con = window.confirm(
-                    "Your design has been saved. Now exit the editor!"
-                  );
-                  if (con) {
-                    window.location.replace("https://icircles.app");
+                  }).then((response) => response.json());
+
+                  //http://localhost/rafat/user/printingpress/rfq/addproduct
+                  //https://icircles.app/user/micrositeadmin/printingpress/addProduct/
+                  if (res.insert_id && res.path && res.status) {
+                    window.location.replace(
+                      `https://icircles.app/user/micrositeadmin/printingpress/addProduct/${
+                        product_id ? product_id + "/" : ""
+                      }?designid=${res.insert_id}&path=${res.path}`
+                    );
+                  } else {
+                    let con = window.confirm(
+                      "Your design has been saved. Do you want to exit now!"
+                    );
+                    if (con) {
+                      window.location.replace("https://icircles.app");
+                    }
                   }
                 });
               }}
@@ -171,36 +185,57 @@ export default observer(({ store }) => {
               ""
             )}
           </Navbar.Group>
-        ) : (
-          ""
         )}
+
         <Navbar.Group align={Alignment.RIGHT}>
           <DownloadButton store={store} />
           {microsite_id && designId ? (
-            <Button
-              minimal
-              style={{ color: "#5ce2fd" }}
-              onClick={async () => {
-                await store.toDataURL().then(async (data) => {
-                  const formData = new FormData();
-                  //let json = await JSON.stringify(store.toJSON());
-                  formData.append("image", data);
-                  formData.append("username", username);
-                  formData.append("id", designId);
-                  formData.append("type", designType);
-                  formData.append("microsite_id", microsite_id);
-                  fetch("https://icircles.app/api/veditor/users_design", {
-                    method: "POST",
-                    body: formData,
+            <div>
+              <Button
+                minimal
+                style={{ color: "#5ce2fd" }}
+                onClick={async () => {
+                  await store.toDataURL().then(async (data) => {
+                    const formData = new FormData();
+                    //let json = await JSON.stringify(store.toJSON());
+                    formData.append("image", data);
+                    formData.append("username", username);
+                    formData.append("id", designId);
+                    formData.append("type", designType);
+                    formData.append("microsite_id", microsite_id);
+                    formData.append("submit", true);
+                    fetch(
+                      " https://icircles.app/api/veditor/addtemplatetocart",
+                      {
+                        method: "POST",
+                        body: formData,
+                      }
+                    )
+                      .then((response) => response.json())
+                      .then((data) => {
+                        if (data.status == 200) {
+                          window.location.replace(
+                            `https://icircles.app/printingpress/designpreview/${microsite_id}/${data.id}`
+                          );
+                        }
+                      });
                   });
-                });
-                window.location.replace(
-                  `https://icircles.app/orderprint/editor/${username}/${designType}/${designId}`
-                );
-              }}
-            >
-              Continue
-            </Button>
+                }}
+              >
+                Continue
+              </Button>
+              <Button
+                minimal
+                style={{ color: "#ffc107" }}
+                onClick={() => {
+                  window.location.replace(
+                    `https://icircles.app/printingpress/home/${microsite_id}`
+                  );
+                }}
+              >
+                Cancel
+              </Button>
+            </div>
           ) : (
             <Button
               minimal

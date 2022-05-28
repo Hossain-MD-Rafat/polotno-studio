@@ -53,6 +53,7 @@ let designType = url.searchParams.get("design_type");
 let designId = url.searchParams.get("design_id");
 let newuser = url.searchParams.get("newuser");
 let microsite_id = url.searchParams.get("microsite_id");
+let user_microsite_id = url.searchParams.get("user_microsite_id");
 //let designer = url.searchParams.get("designer");
 if (!username) {
   window.location.replace("https://icircles.app/login");
@@ -66,7 +67,7 @@ if (designType == "bcardh" || designType == "bcardv") {
 
 const App = ({ store }) => {
   fetch(
-    `https://icircles.app/api/veditor/get_user_json/${username}/${designType}/${designId}/${microsite_id}`
+    `https://icircles.app/api/veditor/get_user_json/${username}/${designType}/${designId}/${microsite_id}/${user_microsite_id}`
   )
     .then(async (data) => await data.json())
     .then(async (res) => {
